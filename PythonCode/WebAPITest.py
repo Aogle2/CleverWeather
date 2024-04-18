@@ -37,6 +37,14 @@ def NewResponder():
         
         cl.send('HTTP/1.0 200 OK\r\nContent-type: application/json\r\n\r\n'.encode())
         print(f"Client Connected from: {addr} with request: {request}\nResponded: {response} to client")
+
+        if request.decode() =="/":
+            response = json.dumps(
+                {
+                    "machine_cpu" : platform.processor()
+                }
+            )
+
         try:
             cl.send(response.encode())
             
