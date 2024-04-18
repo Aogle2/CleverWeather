@@ -34,7 +34,7 @@ def NewResponder():
        
         
         cl.send('HTTP/1.0 200 OK\r\nContent-type: application/json\r\n\r\n'.encode())
-        print(f"Client Connected from: {addr} with request: {request}, Responded: {response} to client")
+        print(f"Client Connected from: {addr} with request: {request}\n Responded: {response} to client")
         try:
             cl.send(response.encode())
             
