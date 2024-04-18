@@ -33,7 +33,7 @@ def NewResponder():
         request = request_data[1] if len(request_data) > 1 else "No Request"
         
         cl.send('HTTP/1.0 200 OK\r\nContent-type: application/json\r\n\r\n'.encode())
-        print(f"Client Connected from: {addr} with request: {request}\nResponded: {response} to client")
+        print(f"Client Connected from: {addr} with request: {request}\nResponded with: {response} to client")
 
         if request.decode() =="/cpu":
             response = json.dumps(
