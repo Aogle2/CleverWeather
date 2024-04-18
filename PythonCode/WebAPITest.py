@@ -38,7 +38,7 @@ def NewResponder():
         if request.decode() =="/cpu":
             response = json.dumps(
                 {
-                    "machine_cpu" : platform.processor()
+                    "machine_cpu" : [platform.processor(),platform.machine()]
                 }
             )
 
