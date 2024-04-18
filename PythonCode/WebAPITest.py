@@ -22,7 +22,8 @@ def NewResponder():
     while True:
 
         json_data = {
-            "machine_arc": platform.architecture()
+            "machine_arc": platform.architecture(),
+            "os": platform.system()
 
         }
         response = json.dumps(json_data)
@@ -31,8 +32,9 @@ def NewResponder():
         request_data = cl.recv(1024).split()
         request = request_data[1] if len(request_data) > 1 else "No Request"
        
-        print(f"Client Connected from: {addr} with request: {request}")
+        
         cl.send('HTTP/1.0 200 OK\r\nContent-type: application/json\r\n\r\n'.encode())
+        print(f"Client Connected from: {addr} with request: {request}, Responded: {response} to client")
         try:
             cl.send(response.encode())
             
