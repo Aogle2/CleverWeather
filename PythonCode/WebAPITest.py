@@ -34,13 +34,18 @@ def NewResponder():
         
         cl.send('HTTP/1.0 200 OK\r\nContent-type: application/json\r\n\r\n'.encode())
         print(f"Client Connected from: {addr} with request: {request}\nResponded with: {response} to client")
+        try:
+            if request.decode() =="/cpu":
+                response = json.dumps(
+                    {
+                        "machine_cpu" : [platform.processor(),platform.machine()],
+                    }
+                )
+        except AttributeError:
+            print("The type changed...moving on")
+            
 
-        if request.decode() =="/cpu":
-            response = json.dumps(
-                {
-                    "machine_cpu" : [platform.processor(),platform.machine()]
-                }
-            )
+        print(type(request))
 
         try:
             cl.send(response.encode())
