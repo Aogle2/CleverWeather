@@ -31,6 +31,9 @@ def NewResponder():
         cl,addr = s.accept()
         request_data = cl.recv(1024).split()
         request = request_data[1] if len(request_data) > 1 else "No Request"
+
+        if request == "b'/'":
+            print("This is a test")
         
         cl.send('HTTP/1.0 200 OK\r\nContent-type: application/json\r\n\r\n'.encode())
         print(f"Client Connected from: {addr} with request: {request}\nResponded: {response} to client")
