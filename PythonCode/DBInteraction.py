@@ -11,7 +11,7 @@ def DBConnect():
     for row in cur.fetchall():
         print(row)
         print(row[0])
-
+    cur.close()
     connection.close()
 
 
