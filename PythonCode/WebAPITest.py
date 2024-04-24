@@ -43,6 +43,8 @@ def NewResponder():
                 )
         except AttributeError:
             print("The type changed...moving on")
+        except BrokenPipeError:
+            print("Broken Pipe?, what did you do?")
             
 
         print(type(request))
