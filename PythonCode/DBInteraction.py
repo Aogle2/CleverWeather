@@ -3,7 +3,7 @@ from mysql import connector as cn
 
 
 def DBConnect():
-    connection = cn.connect(user ="aogle", password = "local#123", host="raspberrypi",database='information_schema')
+    connection = cn.connect(user ="root", password = "local#123", host="localhost",database='information_schema')
     print(connection.get_server_info())
     cur = connection.cursor()
     querey = "show tables;"
