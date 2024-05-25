@@ -5,6 +5,9 @@ import json
 import platform
 
 
+def SendData():
+    pass    
+
 
 
 def NewResponder():
