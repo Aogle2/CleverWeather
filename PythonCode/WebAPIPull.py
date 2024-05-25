@@ -9,3 +9,7 @@ for x,v in r.json().items():
     print(f"{x}:{v}")
 
 
+if "machine_arc" in r.json():
+    print("This has the correct key")
+
+
