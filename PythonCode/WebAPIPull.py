@@ -1,6 +1,6 @@
-from urllib.request import urlretrieve as urlr
+import requests as req
 
-test = urlr("localhost:8088")
+r = req.get("http://localhost:8088")
 
-print(test)
+print(r.json()["machine_arc"])
 
