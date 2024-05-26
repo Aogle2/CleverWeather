@@ -6,7 +6,14 @@ import platform
 
 
 def SendData():
-    pass    
+    pass
+
+json_data_test = {
+            "machine_arc": platform.architecture(),
+            "os": platform.system(),
+            "time": time.localtime()
+
+        }
 
 
 
@@ -44,6 +51,8 @@ def NewResponder():
                         "machine_cpu" : [platform.processor(),platform.machine()],
                     }
                 )
+            if request.decode() =="/time":
+                response = json.dumps(json_data_test)
         except AttributeError:
             print("The type changed...moving on")
         except BrokenPipeError:

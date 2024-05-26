@@ -1,7 +1,9 @@
 import json
 import os
+#C:\Users\Owner\PycharmProjects\CleverWeather\Configuration\BaseDBConfiguration.json
+folder = os.path.join(os.getcwd(),"Configuration")
+print(folder)
+print(os.listdir())
 
-print(os.path.join(os.getcwd(),"Configuration","BaseDBConfiguration.json"))
-
-#with (os.path.join(os.getcwd(),"Configuration","BaseDBConfiguration.json")) as jsonfile:
-#    print(jsonfile.read())
+#with open(file) as f:
+#   data = json.load(f)
