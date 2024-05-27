@@ -1,9 +1,12 @@
 import json
 import os
-#C:\Users\Owner\PycharmProjects\CleverWeather\Configuration\BaseDBConfiguration.json
-folder = os.path.join(os.getcwd(),"Configuration")
-print(folder)
-print(os.listdir())
 
-#with open(file) as f:
-#   data = json.load(f)
+#need to figure out file pathing and how to make it more dynamic.
+file = os.path.join(os.getcwd(),"Configuration","BaseDBConfiguration.json")
+
+try:
+    with open(file) as f:
+        json_file = json.load(f)
+        print(json_file)
+except FileNotFoundError:
+    print(f"file {file} is not present.")

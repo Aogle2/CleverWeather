@@ -8,6 +8,8 @@ import platform
 def SendData():
     pass
 
+api_options = ["/cpu","/temps","/status"]
+
 json_data_test = {
             "machine_arc": platform.architecture(),
             "os": platform.system(),
