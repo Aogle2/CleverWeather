@@ -17,7 +17,8 @@ json_data_test = {
 
         }
 
-
+if "/cpu" in api_options:
+    print("The data is here.")
 
 def NewResponder():
     addr = socket.getaddrinfo("0.0.0.0",8088)[0][-1] #port 80 does not work on WIndows atm.
@@ -45,7 +46,7 @@ def NewResponder():
         request = request_data[1] if len(request_data) > 1 else "No Request"
         
         cl.send('HTTP/1.0 200 OK\r\nContent-type: application/json\r\n\r\n'.encode())
-        print(f"Client Connected from: {addr} with request: {request}\nResponded with: {response} to client")
+        print(f"Client: {addr} with request: {request}\nResponded with: {response}")
         try:
             if request.decode() =="/cpu":
                 response = json.dumps(
