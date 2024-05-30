@@ -2,9 +2,9 @@ import requests as req
 import json
 import os
 
-r = req.get("http://localhost:8088")
+r = req.get("http://localhost:8088/time")
 
-print(r.json()["machine_arc"][0])
+print(r.__sizeof__())
 
 for x,v in r.json().items():
     print(f"{x}:{v}")
