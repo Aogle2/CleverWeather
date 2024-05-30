@@ -40,6 +40,7 @@ def NewResponder():
         }
         response = json.dumps(json_data)
 
+        #Review this stuffs: https://docs.python.org/3/library/socket.html#timeouts-and-the-accept-method
         cl,addr = s.accept()
         request_data = cl.recv(1024).split()
         request = request_data[1] if len(request_data) > 1 else "No Request"
