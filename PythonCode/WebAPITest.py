@@ -1,3 +1,4 @@
+import sys
 import time
 import os
 import socket
@@ -69,7 +70,7 @@ def NewResponder():
 
         try:
             cl.send(response.encode())
-            print(f"Sent {response.__sizeof__()} Bytes")
+            print(f"Sent {sys.getsizeof(response)} Bytes")
         except ConnectionAbortedError:
             print("Connection was aborted by the client.")
             
