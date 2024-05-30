@@ -69,7 +69,7 @@ def NewResponder():
 
         try:
             cl.send(response.encode())
-            
+            print(f"Sent {response.__sizeof__()} Bytes")
         except ConnectionAbortedError:
             print("Connection was aborted by the client.")
             
