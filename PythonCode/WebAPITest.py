@@ -4,6 +4,7 @@ import os
 import socket
 import json
 import platform
+import base64
 
 
 
@@ -44,7 +45,7 @@ def NewResponder():
             print("Broken Pipe?, what did you do?")
 
         try:
-            cl.send(response.encode())
+            cl.send(str(response).encode())
             print(f"Sent {sys.getsizeof(response)} Bytes")
             print(f"Client: {addr} with request: {request}\nResponded with: {response}")
 
