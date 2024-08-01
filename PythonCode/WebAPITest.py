@@ -4,7 +4,6 @@ import os
 import socket
 import json
 import platform
-import base64
 
 
 
@@ -36,8 +35,8 @@ def NewResponder():
                         response = json.dumps({"machine_cpu": [platform.processor()]})
                     case "/time":
                         response = json.dumps({"Time": [time.localtime()]})
-                    case other:
-                        response = json.dumps({"DefaultRequest": [os.uname()]})
+                    case '/':
+                        response = json.dumps({"DefaultRequest": [os.cpu_count()]})
 
         except AttributeError:
             print("The type changed...moving on")
