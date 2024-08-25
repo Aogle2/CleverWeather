@@ -2,7 +2,7 @@ import requests as req
 import json
 import os
 
-r = req.get("http://localhost:8088/time")
+r = req.get("http://localhost:8088/cpu")
 
 print(r.__sizeof__())
 

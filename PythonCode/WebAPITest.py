@@ -4,7 +4,8 @@ import os
 import socket
 import json
 import platform
-
+import cpuinfo as info
+import psutil
 
 
 
@@ -32,11 +33,13 @@ def NewResponder():
             if request.decode() in api_options:
                 match request.decode():
                     case "/cpu":
-                        response = json.dumps({"machine_cpu": [platform.processor()]})
+                        response = json.dumps({"machine_cpu": [info.get_cpu_info()]})
                     case "/time":
                         response = json.dumps({"Time": [time.localtime()]})
+                    case "/temps":
+                        response = json.dumps({"Temps": [psutil.sensors_fans()]})
                     case '/':
-                        response = json.dumps({"DefaultRequest": [os.cpu_count()]})
+                        response = json.dumps({"DefaultRequest": [os.uname()]})
 
         except AttributeError:
             print("The type changed...moving on")
@@ -45,8 +48,9 @@ def NewResponder():
 
         try:
             cl.send(str(response).encode())
-            print(f"Sent {sys.getsizeof(response)} Bytes")
-            print(f"Client: {addr} with request: {request}\nResponded with: {response}")
+            print(f"Client: {addr} with request: {request.decode()}\n"
+                  f"Responded with: {response}\n"
+                  f" Data sent is {sys.getsizeof(response)} Bytes")
 
         except ConnectionAbortedError:
             print("Connection was aborted by the client.")
