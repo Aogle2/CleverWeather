@@ -12,12 +12,37 @@ import psutil
 
 api_options = ["/cpu","/temps","/status","/time","/"]
 
+#Socket programming https://www.digitalocean.com/community/tutorials/python-socket-programming-server-client
+
+class newserver:
+    def __init__(self,host="0.0.0.0",port=8088):
+        self.address = socket.getaddrinfo(host,port, socket.AF_INET,socket.SOCK_STREAM)[0][4]
+        self.sock = socket.socket()
+        self.sock.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+        self.sock.bind(self.address)
+
+    def startlisten(self):
+        self.sock.listen()
+        #while True:
+        #    conn ,addr = self.sock.accept()
+        #    print(f"Connection from: {addr}")
+        #    conn.close()
+
+    def acceptnewconnection(self):
+        pass
+    def senddata(self):
+        pass
+
+
+
+server = newserver()
+
+server.startlisten()
 
 def NewResponder():
     addr = socket.getaddrinfo("0.0.0.0",8088)[0][-1] #port 80 does not work on WIndows atm.
     s = socket.socket()
-    s.setsockopt(socket.SOL_SOCKET,
-                 socket.SO_REUSEADDR,1)
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR,1)
     s.bind(addr)
     s.listen()
     print(f"Listening on: {addr}")
@@ -59,5 +84,5 @@ def NewResponder():
             
         cl.close()
 
-NewResponder()
+
 
