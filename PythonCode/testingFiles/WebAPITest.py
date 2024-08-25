@@ -16,21 +16,23 @@ api_options = ["/cpu","/temps","/status","/time","/"]
 
 class newserver:
     def __init__(self,host="0.0.0.0",port=8088):
-        self.address = socket.getaddrinfo(host,port, socket.AF_INET,socket.SOCK_STREAM)[0][4]
+        self.address = socket.getaddrinfo(host,port, socket.AF_INET,socket.SOCK_STREAM)[0][4] #need to check this one out and see why this is important.
         self.sock = socket.socket()
         self.sock.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
         self.sock.bind(self.address)
 
     def startlisten(self):
         self.sock.listen()
-        #while True:
-        #    conn ,addr = self.sock.accept()
-        #    print(f"Connection from: {addr}")
-        #    conn.close()
+
 
     def acceptnewconnection(self):
-        pass
-    def senddata(self):
+        while True:
+            conn,addr = self.sock.accept()
+            print(f"Connection from: {addr}")
+            newserver.senddata()
+            conn.close()
+
+    def senddata(self,JSON):
         pass
 
 
