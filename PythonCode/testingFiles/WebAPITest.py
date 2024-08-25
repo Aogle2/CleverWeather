@@ -22,8 +22,11 @@ class newserver:
         self.sock.bind(self.address)
 
     def startlisten(self):
+        print(f"{self.sock}")
         self.sock.listen()
-
+    def stopserver(self):
+        print(f"server should be stopped")
+        self.sock.close()
 
     def acceptnewconnection(self):
         while True:
@@ -40,6 +43,8 @@ class newserver:
 server = newserver()
 
 server.startlisten()
+
+server.stopserver()
 
 def NewResponder():
     addr = socket.getaddrinfo("0.0.0.0",8088)[0][-1] #port 80 does not work on WIndows atm.
