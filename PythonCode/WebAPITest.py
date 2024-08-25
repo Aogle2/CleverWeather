@@ -9,7 +9,9 @@ import psutil
 
 
 
+
 api_options = ["/cpu","/temps","/status","/time","/"]
+
 
 def NewResponder():
     addr = socket.getaddrinfo("0.0.0.0",8088)[0][-1] #port 80 does not work on WIndows atm.
