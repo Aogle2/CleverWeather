@@ -6,6 +6,7 @@ import json
 import platform
 import cpuinfo as info
 import psutil
+import time
 
 
 
@@ -13,38 +14,6 @@ import psutil
 api_options = ["/cpu","/temps","/status","/time","/"]
 
 #Socket programming https://www.digitalocean.com/community/tutorials/python-socket-programming-server-client
-
-class newserver:
-    def __init__(self,host="0.0.0.0",port=8088):
-        self.address = socket.getaddrinfo(host,port, socket.AF_INET,socket.SOCK_STREAM)[0][4] #need to check this one out and see why this is important.
-        self.sock = socket.socket()
-        self.sock.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
-        self.sock.bind(self.address)
-
-    def startlisten(self):
-        print(f"{self.sock}")
-        self.sock.listen()
-    def stopserver(self):
-        print(f"server should be stopped")
-        self.sock.close()
-
-    def acceptnewconnection(self):
-        while True:
-            conn,addr = self.sock.accept()
-            print(f"Connection from: {addr}")
-            newserver.senddata()
-            conn.close()
-
-    def senddata(self,JSON):
-        pass
-
-
-
-server = newserver()
-
-server.startlisten()
-
-server.stopserver()
 
 def NewResponder():
     addr = socket.getaddrinfo("0.0.0.0",8088)[0][-1] #port 80 does not work on WIndows atm.
@@ -90,6 +59,8 @@ def NewResponder():
             print("Connection was aborted by the client.")
             
         cl.close()
+
+NewResponder()
 
 
 
