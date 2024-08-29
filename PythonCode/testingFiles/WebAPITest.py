@@ -28,7 +28,7 @@ def NewResponder():
 
         #Review this stuffs: https://docs.python.org/3/library/socket.html#timeouts-and-the-accept-method
         cl,addr = s.accept()
-        request_data = cl.recv(1024).split()
+        request_data = cl.recv(2048).split()
         request = request_data[1] if len(request_data) > 1 else "No Request"
 
         cl.send('HTTP/1.0 200 OK\r\nContent-type: application/json\r\n\r\n'.encode())
