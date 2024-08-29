@@ -31,7 +31,7 @@ def NewResponder():
         request_data = cl.recv(2048).split()
         request = request_data[1] if len(request_data) > 1 else "No Request"
 
-        cl.send('HTTP/1.0 200 OK\r\nContent-type: application/json\r\n\r\n'.encode())
+        cl.send('HTTP/1.0 200 OK\r\nContent-type: application/json\r\n\r\n'.encode()) #Need to figure out why this is sent.
         try:
             if request.decode() in api_options:
                 match request.decode():
