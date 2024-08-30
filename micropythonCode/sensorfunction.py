@@ -19,3 +19,14 @@ temp = sensor.temperature()
 hum = sensor.humidity()
 print("Temperature: {}°C   Humidity: {:.0f}% ".format(temp, hum))
 
+def get_temp(pin):
+    sensor = dht.DHT11(Pin(pin,Pin.IN))
+
+    def convert_to_fahrenheit(celsius):
+        return (celsius * 9/5) +32
+
+    sensor.measure()
+
+
+
+
