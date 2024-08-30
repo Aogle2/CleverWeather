@@ -2,7 +2,7 @@ import requests as req
 import json
 import os
 
-r = req.get("http://localhost:8088/cpu")
+r = req.get("http://10.0.0.53:8088/cpu")
 
 print(r.__sizeof__())
 
