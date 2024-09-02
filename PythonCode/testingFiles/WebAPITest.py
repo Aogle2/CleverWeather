@@ -14,6 +14,9 @@ import time
 api_options = ["/cpu","/temps","/status","/time","/"]
 
 #Socket programming https://www.digitalocean.com/community/tutorials/python-socket-programming-server-client
+#Work in some more improvements: https://www.delftstack.com/howto/python/get-ip-address-python/
+#May look into using this for more improvements https://thepythoncode.com/article/make-a-chat-room-application-in-python
+#More improvements https://www.golinuxcloud.com/python-multiprocessing/#:~:text=To%20use%20the%20multiprocessing%20features%20in%20your%20Python,and%20classes%3A%20python%20from%20multiprocessing%20import%20Process%2C%20Queue
 
 def NewResponder():
     addr = socket.getaddrinfo("0.0.0.0",8088)[0][-1] #port 80 does not work on WIndows atm.
