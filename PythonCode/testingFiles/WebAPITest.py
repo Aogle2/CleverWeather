@@ -64,7 +64,7 @@ def NewResponder():
                 print("Wrong encode for some stupid reason, nothing has changed?")
 
         except ConnectionAbortedError:
-            print("Connection was aborted by the client.")
+            print(f"Connection was aborted by the client: {addr}")
 
         cl.close()
 
