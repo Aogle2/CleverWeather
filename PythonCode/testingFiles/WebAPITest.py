@@ -57,7 +57,7 @@ def NewResponder():
         try:
             cl.send(str(response).encode())
             try:
-                print(f"Client: {addr} with request: {request.decode()}\n"
+                print(f"Client: {addr} with request in bytes: {request}\n"
                       f"Responded with: {response}\n"
                       f" Data sent is {sys.getsizeof(response)} Bytes")
             except AttributeError:
@@ -65,7 +65,7 @@ def NewResponder():
 
         except ConnectionAbortedError:
             print("Connection was aborted by the client.")
-            
+
         cl.close()
 
 NewResponder()
