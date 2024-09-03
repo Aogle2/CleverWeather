@@ -3,6 +3,9 @@ import json
 import os
 
 r = req.get("http://localhost:8088/cpu")
+print(r.status_code)
+print(r.encoding)
+print(r.headers)
 
 print(r.__sizeof__())
 
