@@ -45,7 +45,9 @@ def NewResponder():
                     case "/temps":
                         response = json.dumps({"Temps": [psutil.sensors_fans()]})
                     case '/':
-                        response = json.dumps({"DefaultRequest": [os.uname()]})
+                        response = json.dumps({"DefaultRequest": ["Nothing stated"]})
+                    case _:
+                        response = json.dumps({"Default Request":[]})
 
         except AttributeError:
             print("The type changed...moving on")
@@ -54,9 +56,12 @@ def NewResponder():
 
         try:
             cl.send(str(response).encode())
-            print(f"Client: {addr} with request: {request.decode()}\n"
-                  f"Responded with: {response}\n"
-                  f" Data sent is {sys.getsizeof(response)} Bytes")
+            try:
+                print(f"Client: {addr} with request: {request.decode()}\n"
+                      f"Responded with: {response}\n"
+                      f" Data sent is {sys.getsizeof(response)} Bytes")
+            except AttributeError:
+                print("Wrong encode for some stupid reason, nothing has changed?")
 
         except ConnectionAbortedError:
             print("Connection was aborted by the client.")
