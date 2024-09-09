@@ -28,6 +28,19 @@ def get_temp(pin):
 
     sensor.measure()
 
+#Try making a class version of this.
+
+class TempHumitySensor:
+    def __init__(self,pin):
+        self.pin = Pin(pin,Pin.IN)
+        self.sensor = dht.DHT11(self.pin)
+
+    def ReadSensorOverall(self):
+        self.sensor.measure()
+        temp = self.sensor.temperature()
+        humidity = self.sensor.humidity()
+        return temp,humidity
+
 
 
 
