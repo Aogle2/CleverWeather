@@ -32,8 +32,8 @@ def get_temp(pin):
 
 class TempHumitySensor:
     def __init__(self,pin):
-        self.pin = Pin(pin,Pin.IN)
-        self.sensor = dht.DHT11(self.pin)
+        self.gppin = Pin(pin,Pin.IN)
+        self.sensor = dht.DHT11(self.gppin)
 
     def ReadSensorOverall(self):
         self.sensor.measure()
