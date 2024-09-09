@@ -46,7 +46,7 @@ def NewResponder():
                         response = json.dumps({"Temps": [psutil.sensors_fans()]})
                     case '/':
                         response = json.dumps({"DefaultRequest": ["Nothing stated"]})
-                    case _:
+                    case _: #This is a default if nothing is found in the match case statement
                         response = json.dumps({"Default Request":[]})
 
         except AttributeError:
