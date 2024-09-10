@@ -30,7 +30,7 @@ def get_temp(pin):
 
 #Try making a class version of this.
 
-class TempHumitySensor:
+class TempHumitySensor: #https://llego.dev/posts/python-naming-conventions-and-best-practices-for-class-and-object-names/
     def __init__(self,pin):
         self.gppin = Pin(pin,Pin.IN)
         self.sensor = dht.DHT11(self.gppin)
