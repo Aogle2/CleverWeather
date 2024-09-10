@@ -39,23 +39,25 @@ def NewResponder():
             if request.decode() in api_options:
                 match request.decode():
                     case "/cpu":
-                        response = json.dumps({"machine_cpu": [info.get_cpu_info()]})
+                        response = {"machine_cpu": [info.get_cpu_info()]}
                     case "/time":
-                        response = json.dumps({"Time": [time.localtime()]})
+                        response = {"Time": [time.localtime()]}
                     case "/temps":
-                        response = json.dumps({"Temps": [psutil.sensors_fans()]})
+                        response = {"Temps": [psutil.sensors_fans()]}
                     case '/':
-                        response = json.dumps({"DefaultRequest": ["Nothing stated"]})
+                        response = {"DefaultRequest": ["Nothing stated"]}
                     case _: #This is a default if nothing is found in the match case statement
-                        response = json.dumps({"Default Request":[]})
+                        response = {"Default Request":[]}
 
         except AttributeError:
             print("The type changed...moving on")
         except BrokenPipeError:
             print("Broken Pipe?, what did you do?")
 
+
         try:
-            cl.send(str(response).encode())
+            response["Test"] = [sys.getsizeof(response)]
+            cl.send(str(json.dumps(response)).encode())
             try:
                 print(f"Client: {addr} with request in bytes: {request}\n"
                       f"Responded with: {response}\n"
@@ -67,6 +69,7 @@ def NewResponder():
             print(f"Connection was aborted by the client: {addr}")
 
         cl.close()
+
 
 NewResponder()
 

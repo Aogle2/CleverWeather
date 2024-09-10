@@ -10,13 +10,14 @@ def checkwebserver(server):
 
 checkwebserver("localhost")
 
-#r = req.get("http://localhost:8088/cpu")
-#print(r.status_code)
-#print(r.encoding)
-#print(r.headers)
-#
-#print(r.__sizeof__())
-#
+
+r = req.get("http://localhost:8088/cpu")
+print(r.status_code)
+print(r.encoding)
+print(r.headers)
+
+print(r.__sizeof__())
+print(r)
 #for x,v in r.json().items():
 #    print(f"{x}:{v}")
 #
