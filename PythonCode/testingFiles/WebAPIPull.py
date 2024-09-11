@@ -8,19 +8,33 @@ def checkwebserver(server):
     if r.status_code == 200:
         print(f"{server} is up and able to be read.")
 
-checkwebserver("localhost")
+#checkwebserver("localhost")
 
 
-r = req.get("http://localhost:8088/cpu")
-print(r.status_code)
-print(r.encoding)
-print(r.headers)
+#r = req.get("http://localhost:8088/cpu")
 
-print(r.__sizeof__())
-print(r)
+class CheckWebServer:
+    def __init__(self,server):
+        self.ser = f"http://{server}:8088"
+
+    def check_status(self):
+        if req.get(self.ser).status_code == 200:
+            return True
+        else:
+            return False
+print(CheckWebServer("localhost").check_status())
+
+
+
+#print(r.status_code)
+#print(r.encoding)
+#print(r.headers)
+
+#print(r.__sizeof__())
+#print(r)
 #for x,v in r.json().items():
 #    print(f"{x}:{v}")
-#
+
 #if "machine_cpu" in r.json():
 #    print("This has the correct key")
 #
