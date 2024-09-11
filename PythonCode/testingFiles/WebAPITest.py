@@ -46,8 +46,8 @@ def NewResponder():
                         response = {"Temps": [psutil.sensors_fans()]}
                     case '/':
                         response = {"DefaultRequest": ["Nothing stated"]}
-                    case _: #This is a default if nothing is found in the match case statement
-                        response = {"Default Request":[]}
+                    #case _: #This is a default if nothing is found in the match case statement
+                    #    response = {"Default Request":[]}
 
         except AttributeError:
             print("The type changed...moving on")
