@@ -56,7 +56,7 @@ def NewResponder():
 
 
         try:
-            response["Test"] = [sys.getsizeof(response)]
+            #response["Test"] = [sys.getsizeof(response)] #You can append to the dict before it goes to be a json format
             cl.send(str(json.dumps(response)).encode())
             try:
                 print(f"Client: {addr} with request in bytes: {request}\n"
