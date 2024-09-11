@@ -1,3 +1,5 @@
+from wsgiref.validate import check_status
+
 import requests as req
 import json
 import os
@@ -22,8 +24,7 @@ class CheckWebServer:
             return True
         else:
             return False
-print(CheckWebServer("localhost").check_status())
-
+#print(CheckWebServer("localhost").check_status())
 
 
 #print(r.status_code)
