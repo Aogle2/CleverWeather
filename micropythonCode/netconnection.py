@@ -1,6 +1,7 @@
 import network as nw
 import machine
 from time import sleep
+import _thread as thread
 
 
 class Connection():
@@ -13,6 +14,13 @@ class Connection():
     def ToggleLED(self):
         self.OnboardLED.toggle()
 
+    def BlinkLED(self):
+        while True:
+            self.ToggleLED()
+            sleep(2)
+            self.ToggleLED()
+            break
+
     def ConnectNow(self):
         wlan = nw.WLAN(nw.STA_IF)
         wlan.active(True)
@@ -20,6 +28,10 @@ class Connection():
 
         if wlan.status() == 1:
             print(f"Incorrect Password for {self.wifiName}")
+            self.BlinkLED()
+
+        if wlan.status() == 3:
+            print(f"Device is connected ")
 
         if wlan.isconnected():
             self.ToggleLED()
