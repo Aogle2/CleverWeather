@@ -14,6 +14,7 @@ class Connection():
 
 
 
+#implement part of this here: https://programmingdigest.com/getting-started-with-raspberry-pi-pico-w-built-in-wifi/#:~:text=If%20the%20Pico%20W%20is%20not%20connected%20to,status%20messages%2C%20will%20be%20displayed%20on%20the%20console.
 
 
 
