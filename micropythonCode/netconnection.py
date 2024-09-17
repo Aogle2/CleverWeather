@@ -1,4 +1,5 @@
 import network as nw
+import machine
 
 
 class Connection():
@@ -11,6 +12,9 @@ class Connection():
         wlan = nw.WLAN(nw.STA_IF)
         wlan.active(True)
         wlan.connect(self.wifiName, self.wifipass)
+
+        while wlan.isconnected():
+
 
 
 
