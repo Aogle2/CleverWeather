@@ -11,15 +11,11 @@ class Connection():
         self.OnboardLED = machine.Pin("LED", machine.Pin.OUT)
         print(f"{self.wifiName} will be connected to...")
 
-    def ToggleLED(self):
+    async def ToggleLED(self):
         self.OnboardLED.toggle()
 
-    def BlinkLED(self):
-        while True:
-            self.ToggleLED()
-            sleep(2)
-            self.ToggleLED()
-            break
+    async def BlinkLED(self):
+        pass
 
     def ConnectNow(self):
         wlan = nw.WLAN(nw.STA_IF)
@@ -37,6 +33,7 @@ class Connection():
             self.ToggleLED()
 
 # implement part of this here: https://programmingdigest.com/getting-started-with-raspberry-pi-pico-w-built-in-wifi/#:~:text=If%20the%20Pico%20W%20is%20not%20connected%20to,status%20messages%2C%20will%20be%20displayed%20on%20the%20console.
+
 
 
 
