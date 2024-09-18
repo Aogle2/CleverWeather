@@ -9,7 +9,7 @@ import psutil
 import time
 
 
-
+#This may be good for devices that cannot have fastapi or something else.
 
 api_options = ["/cpu","/temps","/status","/time","/"]
 
