@@ -1,4 +1,5 @@
 from machine import Pin
+import errno
 import dht
 
 
@@ -10,11 +11,18 @@ class TempHumiditySensor:
         self.gppin = Pin(pin, Pin.IN)
         self.sensor = dht.DHT11(self.gppin)
 
-    # Read all of the sensor and return temp and humidity.
+    # Read all the sensor and return temp and humidity.
     def ReadSensorOverall(self):
-        self.sensor.measure()
+        try:
+            self.sensor.measure()
+
+        except OSError as err:
+            if err.errno == 110:
+                print(f"Device on Pin {self.gppin} is not responding")
+
         temp = self.sensor.temperature()
         humidity = self.sensor.humidity()
 
         return temp, humidity
+
 

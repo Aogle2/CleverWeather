@@ -1,5 +1,6 @@
 import network as nw
 import machine
+import errno
 from time import sleep
 import _thread as thread
 
